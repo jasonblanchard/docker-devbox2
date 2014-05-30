@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "precise64"
+  config.vm.provision "docker"
+  config.vm.network "forwarded_port", guest: 6379, host: 6379
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 4243, host: 4243
+
+  config.vm.synced_folder "../src/", "/home/vagrant/src"
+
+  config.vm.provider 'virtualbox' do |v|
+    v.memory = 4048
+    v.cpus = 4
+  end
+
+  # Trying to get the docker daeon to bund to port 4342 so that we can
+  # access it from the host machine
+  #
+  # config.vm.provision "shell",
+  #  inline: "sudo rm /var/run/docker.pid && sudo docker -d -H 0.0.0.0:4342"
+
+end
