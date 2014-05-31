@@ -17,6 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     mongo.vm.provider "docker" do |d|
       d.image = "ehazlett/mongodb"
       d.ports = ["27017:27017"]
+      d.volumes = ["/home/vagrant/data:/tmp/mongo"]
+      d.env = { "DATA_DIR" => "/tmp/mongo" }
       d.vagrant_vagrantfile = "dproxy/Vagrantfile"
     end
   end

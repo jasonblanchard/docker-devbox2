@@ -10,6 +10,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell",
     inline: "echo 'DOCKER_OPTS=\"-H 0.0.0.0:4243 -H unix:///var/run/docker.sock\"' >> /etc/default/docker"
 
+  config.vm.provision :shell, :path => "bootstrap.sh"
+
   config.vm.provision "docker"
 
   config.vm.network "forwarded_port", guest: 6379, host: 6379
