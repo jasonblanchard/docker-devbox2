@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise64"
 
   config.vm.provision "shell",
-   inline: "echo 'DOCKER_OPTS=\"-H 0.0.0.0:4243\"' >> /etc/default/docker"
+    inline: "echo 'DOCKER_OPTS=\"-H 0.0.0.0:4243 -H unix:///var/run/docker.sock\"' >> /etc/default/docker"
 
   config.vm.provision "docker"
 
