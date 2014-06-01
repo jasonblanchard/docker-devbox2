@@ -28,7 +28,7 @@ This means that you can attach `docker` commands on your host OS to the docker d
 
 `docker -H tcp://localhost:4243 [command]`
 
-or export the `DOCKER_HOST` environment variable in your `.bash_profile`:
+or put this line in your `bash_profile` to ser the the `DOCKER_HOST` environment variable:
 
 `export DOCKER_HOST=tcp://localhost:4243`
 
