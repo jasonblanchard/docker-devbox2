@@ -5,9 +5,11 @@ Uses `config.yml` to create Docker containers as Vagrant **providers**. These co
 Configuring Services
 ================
 git clone this repo:
+
 `git clone https://github.com/jasonblanchard/docker-devbox2.git [project-name]`
 
 Copy `config.yml.example` to `config.yml`:
+
 `cp config.yml.example config.yml`
 
 Each service in `config.yml` includes a `docker_config` which uses the same parameters as Vagrant Docker provider configuration: http://docs.vagrantup.com/v2/docker/configuration.html
