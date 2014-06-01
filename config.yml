@@ -1,11 +1,14 @@
+# Configures resources on the proxy VM
 memory: 4048
 cpus: 4
 services:
   redis:
+    # Uses the same config params as http://docs.vagrantup.com/v2/docker/configuration.html
     docker_config:
       image: dockerfile/redis
       ports: 
         - 6379:6379
+    # Optional: Configures forwarded ports from the proxy VM to our host OS
     forwarded_ports:
       guest: 6379
       host: 6379

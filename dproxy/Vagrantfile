@@ -13,21 +13,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = ddb_config["cpus"]
   end
 
+  # Bind the docker daemon to all interfaces
   config.vm.provision "shell",
     inline: "echo 'DOCKER_OPTS=\"-H 0.0.0.0:4243 -H unix:///var/run/docker.sock\"' >> /etc/default/docker"
 
+  # Forward 4243 so we can access the docker daemon with docker commands
+  # on the host OS
+  config.vm.network "forwarded_port", guest: 4243, host: 4243
+
+  # Set up a data directory to store persistent data
   config.vm.provision :shell, :path => "bootstrap.sh"
 
+  # Tell Vagrant we want to install Docker
   config.vm.provision "docker"
 
+  # Forward ports for each Docker service if specified in config.yml
   ddb_config["services"].each do |service, service_config|
     if service_config["forwarded_ports"]
       config.vm.network "forwarded_port", guest: service_config["forwarded_ports"]["guest"], host: service_config["forwarded_ports"]["guest"]
     end
   end
 
-  config.vm.network "forwarded_port", guest: 4243, host: 4243
-
+  # TODO: Add optional synced folders in config.yml
   config.vm.synced_folder "../src/", "/home/vagrant/src"
 
 end
