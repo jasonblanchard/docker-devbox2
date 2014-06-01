@@ -14,7 +14,7 @@ Copy `config.yml.example` to `config.yml`:
 
 Each service in `config.yml` includes a `docker_config` which uses the same parameters as Vagrant Docker provider configuration: http://docs.vagrantup.com/v2/docker/configuration.html
 
-See inline documentation for more information
+See inline documentation in `config.yml.example` for more information
 
 Usage
 =====
