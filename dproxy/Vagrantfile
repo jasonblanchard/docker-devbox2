@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  # TODO: Add optional synced folders in config.yml
+  # Sync src file so source files are available on proxy VM
   config.vm.synced_folder "../src/", "/home/vagrant/src"
 
 end
