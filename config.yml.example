@@ -1,5 +1,7 @@
-memory: 4048
-cpus: 4
+proxy_vm:
+  name: "project"
+  memory: 4048
+  cpus: 4
 services:
   redis:
     docker_config:
