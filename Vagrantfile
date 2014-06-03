@@ -12,7 +12,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       service.vm.provider "docker" do |d|
         d.name = docker_service
         service_config['docker_config'].each do |key, value|
-          d.send("#{key}=", value)
+          if key == 'link'
+            # Link uses a method invocation syntax
+            d.send("#{key}", value)
+          else
+            d.send("#{key}=", value)
+          end
         end
         d.vagrant_vagrantfile = "dproxy/Vagrantfile"
       end
