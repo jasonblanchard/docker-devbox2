@@ -35,3 +35,19 @@ or put this line in your `bash_profile` to ser the the `DOCKER_HOST` environment
 Docker will honor this environment variable when you execute any `docker` commands.
 
 More info on the Docker daemon here: http://docs.docker.io/reference/commandline/cli/#daemon
+
+Known Issues
+============
+If you see this message when you first run `vagrant up`:
+
+```
+A Docker command executed by Vagrant didn't complete successfully!
+The command run along with the output from the command is shown
+below.
+
+Command: "docker" "ps" "-a" "-q" "--no-trunc"
+
+Stderr: 2014/06/09 20:55:18 Get http:///var/run/docker.sock/v1.12/containers/json?all=1: dial unix /var/run/docker.sock: permission denied
+```
+
+Just run `vagrant up` again.
