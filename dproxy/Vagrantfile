@@ -37,5 +37,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Sync src file so source files are available on proxy VM
   config.vm.synced_folder "../src/", "/home/vagrant/src"
+  config.vm.synced_folder "../scripts/", "/home/vagrant/scripts"
+
+  config.ssh.forward_agent = true
 
 end
