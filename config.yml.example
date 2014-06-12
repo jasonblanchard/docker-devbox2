@@ -48,5 +48,5 @@ services:
       volumes:
         - /home/vagrant/src:/src
     forwarded_ports:
-      guest: 3000
-      host: 4000
+      guest: 4000
+      host: 3000
