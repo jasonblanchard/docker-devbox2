@@ -7,11 +7,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   ddb_config = YAML.load_file(DDB_CONFIG_PATH)
 
-  config.vm.box = "precise64"
+  config.vm.box = "raring64"
   config.vm.provider 'virtualbox' do |v|
     v.name = "#{ddb_config["proxy_vm"]["name"]}-dproxy"
     v.memory = ddb_config["proxy_vm"]["memory"]
     v.cpus = ddb_config["proxy_vm"]["cpus"]
+    #v.gui = true
   end
 
   # Bind the docker daemon to all interfaces

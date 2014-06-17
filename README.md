@@ -2,6 +2,8 @@ Development environment provisioner using Docker and Vagrant!
 
 Uses `config.yml` to create Docker containers as Vagrant **providers**. These containers will run in a proxy VM which is configured with a Vagrantfile in `dproxy`.
 
+`raring64` Vagrant base box is https://dl.dropboxusercontent.com/u/547671/thinkstack-raring64.box
+
 Configuring Services
 ================
 git clone this repo:
